@@ -1,0 +1,153 @@
+body
+{
+   background: linear-gradient(217deg ,rgb(61, 1, 59) , rgb(6, 0, 42));
+}
+.ButtonPanel
+{
+position: absolute;
+top: calc(50% - 100px);
+left: calc(50% - 250px);
+width: 500px;
+height: 200px;
+text-align: center;
+}
+
+.ButtonPanel .AnimatedButton
+{
+width: 225px;
+height: 200px;
+display: inline-block;
+}
+
+.ButtonPanel .AnimatedButton:nth-child(1)
+{
+margin-right: 10px;
+}
+
+.ButtonPanel .AnimatedButton:nth-child(2)
+{
+margin-left: 10px;
+}
+
+.ButtonPanel .buttonImg
+{
+position: relative;
+top: 25px;
+}
+
+.ButtonPanel .AnimatedButton:nth-child(1) .buttonImg:hover
+{
+animation: magnify 1s 1 ease-in-out;
+}
+
+.ButtonPanel .AnimatedButton:nth-child(2) .buttonImg:hover
+{
+animation: tlit 1s 1 ease-in-out;
+}
+
+@keyframes tlit
+{
+   0% { rotate: 0deg; }
+   25% {rotate: 10deg; }
+   50% {rotate: -10deg;}
+}
+
+@keyframes magnify
+{
+   0% {transform: scale(100%);}
+   50% {transform: scale(110%);}
+   75% {transform: scale(85%);}
+   100% {transform: scale(100%);}
+}
+
+/* Animated button */
+.AnimatedButton.RotatingBorder , .AnimatedButton.RotatingBorder.Inverse
+{
+   position: relative;
+   cursor: pointer;
+   background-color: rgba(0, 0, 0, 0);
+   overflow: hidden;
+   border-radius: 10px;
+   box-shadow: 0px 0px 10px black;
+}
+
+.AnimatedButton.RotatingBorder .bg-animation , .AnimatedButton.RotatingBorder.Inverse .bg-animation
+{
+   width: 75%;
+   height: 75%;
+   position: absolute;
+}
+
+.AnimatedButton.RotatingBorder .bg-animation
+{
+   top: 50%;
+   left: 50%;
+   transform-origin: 0% 0% ;
+   background:linear-gradient(60deg ,rgb(0, 255, 251) , rgb(17, 0, 255) , rgba(17, 0, 255, 0));
+   opacity: 0;
+}
+
+.AnimatedButton.RotatingBorder.Inverse .bg-animation
+{
+   top: 50%;
+   left: -25%;
+   transform-origin: 100% 0% ;
+   background:linear-gradient(0deg ,rgb(255, 0, 255) , rgba(255, 0, 255, 0));
+   opacity: 0;
+}
+
+.AnimatedButton.RotatingBorder .content-panel , .AnimatedButton.RotatingBorder.Inverse .content-panel
+{
+   position: absolute;
+   width: calc(100% - 10px);
+   height: calc(100% - 10px);
+   top:5px;
+   left:5px;
+   border-radius: 10px;
+}
+
+.AnimatedButton.RotatingBorder .content-panel
+{
+    background-color: rgb(92, 0, 118);
+}
+
+.AnimatedButton.RotatingBorder.Inverse .content-panel
+{
+    background-color: rgb(53, 0, 99);
+}
+
+@keyframes border-rotate
+{
+   0%   {transform: rotate(0deg);}
+   100%  {transform: rotate(360deg);}
+}
+
+@keyframes border-rotate-reverse
+{
+   0%   {transform: rotate(360deg);}
+   100%  {transform: rotate(0deg);}
+}
+
+.AnimatedButton.RotatingBorder:hover .bg-animation
+{
+    opacity: 1;
+    animation: border-rotate 1.5s infinite linear;
+}
+
+.AnimatedButton.RotatingBorder:hover .content-panel
+{
+    transition: all .2s;
+    background-color: rgb(69, 0, 88);
+}
+
+.AnimatedButton.RotatingBorder.Inverse:hover .bg-animation
+{
+    opacity: 1;
+    animation: border-rotate-reverse 1.5s infinite linear;
+}
+
+.AnimatedButton.RotatingBorder.Inverse:hover .content-panel
+{
+    transition: all .2s;
+    background-color: rgb(40, 0, 75);
+}
