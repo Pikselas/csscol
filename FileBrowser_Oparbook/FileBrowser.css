@@ -1,0 +1,214 @@
+@font-face 
+{
+    font-family: "modern-sans-serif";
+    src: url("fonts/modern-sans-serif.ttf");
+}
+.FileBrowserWindow
+{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+    box-shadow: 0px 0px 10px black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.FileBrowserWindow .Rotor
+{
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    animation: RotatingDoubleBorder 3s infinite linear;
+}
+.FileBrowserWindow .Rotor div
+{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+.FileBrowserWindow .Rotor div:nth-child(1)
+{
+    left: 0%;
+    background:linear-gradient(180deg ,rgb(0, 255, 251) , rgb(17, 0, 255) , rgba(17, 0, 255, 0));
+}
+.FileBrowserWindow .Rotor div:nth-child(2)
+{
+    right: 0%;
+    background:linear-gradient(0deg ,rgb(255, 0, 255) , rgba(255, 0, 255, 0));
+}
+.FileBrowserWindow .MainPanel
+{
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #0a0014;
+    border-radius: 15px;
+    text-align: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.FileBrowserWindow .MainPanel .Tools
+{
+    width: 95%;
+    height: 40px;
+    margin-top: 5px;
+    display: inline-block;
+    border-radius: 10px;
+    /* border: 2px solid rgb(144, 0, 255); */
+    /* border-top: none; */
+    /* box-shadow: 0px 0px 5px rgb(144, 0, 255); */
+    /* background-color: blueviolet; */
+}
+.FileBrowserWindow .MainPanel .Tools img
+{
+    transition: all .2s cubic-bezier(.85,-1.21,.58,1);
+    cursor: pointer;
+}
+.FileBrowserWindow .MainPanel .Tools img:hover
+{
+    filter: brightness(0.5) invert();
+    transform: scale(1.1);
+}
+.FileBrowserWindow .MainPanel .Tools img:active
+{
+    transition: all .1s;
+    transform: scale(1);
+}
+.FileBrowserWindow .MainPanel .ItemSection
+{
+    width: 95%;
+    height: calc(100% - 70px);
+    margin-top: 5px;
+    display: inline-block;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* box-shadow: 0px 0px 5px rgb(144, 0, 255); */
+    /* background-color: blueviolet; */
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item
+{
+    transition: all .2s;
+    width: 200px;
+    height: 35px;
+    /* border: 2px solid rgb(0, 204, 255); */
+    border-radius: 10px;
+    margin:2px;
+    display: inline-block;
+    text-align: left;
+    /* animation: gradientanm 2s linear infinite; */
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item.Folder
+{
+    background: linear-gradient(60deg ,rgb(33, 1, 82) , rgb(63, 0, 91) , rgb(199, 0, 255));
+    background-size: 150% 100%;
+    color: #24c6b7;
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item.File
+{
+    background: linear-gradient(60deg ,rgb(2, 14, 109) , rgb(0, 255, 229) , rgb(2, 14, 109));
+    background-size: 150% 100%;
+    color: #130362;
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item.Folder::before
+{
+    position: relative;
+    content: url("icons/folder-small.png");
+    top: 9px;
+    left: 10px;
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item.Item.File::before
+{
+    position: relative;
+    content: url("icons/file-small.png");
+    top: 9px;
+    left: 10px;
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item div
+{
+    position: relative;
+    top: -11px;
+    left: 34px;
+    width: 157px;
+    height: 20px;
+    font-family: "modern-sans-serif";
+    font-size: medium;
+    font-weight:medium;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap
+}
+.FileBrowserWindow .MainPanel .ItemSection .Item:hover
+{
+    cursor: pointer;
+    background-position-x: 100%;
+}
+.FileBrowserWindow .SelectedPanel
+{
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    background-color: #2e054be0;
+    top: 50px;
+    left: 150px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+.FileBrowserWindow .SelectedPanel .Item
+{
+    transition: all .5s;
+    cursor:pointer;
+    position: relative;
+    left: 5px;
+    width: 190px;
+    height: 20px;
+    margin-top: 2px;
+    border-radius: 5px;
+    background-color: #0a0434de;
+    color: #1b88ed;
+    font-family: "modern-sans-serif";
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap
+}
+.FileBrowserWindow .SelectedPanel .Item img
+{
+    position: absolute;
+    top: -2px;
+    left: 200px;
+    opacity: 0;
+    transition: all .5s;
+}
+.FileBrowserWindow .SelectedPanel .Item:hover
+{
+    /* font-size: 0px; */
+    text-indent: -500px;
+    background-color: #570478;
+}
+.FileBrowserWindow .SelectedPanel .Item:hover img
+{
+    left: 80px;
+    opacity: 1;
+}
+.FileBrowserWindow .SelectedPanel .Item img:hover
+{
+    filter: invert();
+}
+@keyframes RotatingDoubleBorder
+{
+    from {rotate: 0deg;}
+    to {rotate: 360deg;}
+}
+@keyframes gradientanm
+{
+    0% {background-position: 0% 0%;}
+    50% {background-position: 100% 0%;}
+    100% {background-position: 0% 0%;}
+}
